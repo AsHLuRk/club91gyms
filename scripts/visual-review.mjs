@@ -4,7 +4,7 @@ const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotio
 try {
 await page.goto('http://127.0.0.1:3000');
 await page.evaluate(()=>document.fonts.ready);
-await page.waitForFunction(()=>document.querySelector('.hero-photo img').complete&&getComputedStyle(document.querySelector('.hero-line>span')).transform==='none');
+await page.waitForFunction(()=>document.querySelector('.hero-photo img').complete&&['none','matrix(1, 0, 0, 1, 0, 0)'].includes(getComputedStyle(document.querySelector('.hero-line>span')).transform));
 await page.waitForFunction(()=>getComputedStyle(document.querySelector('.hero-copy').parentElement).opacity==='1');
 console.log(await page.evaluate(()=>({font:getComputedStyle(document.querySelector('h1')).fontFamily,fonts:[...document.fonts].map(f=>({family:f.family,status:f.status})),width:innerWidth})));
 await page.screenshot({path:'test-results/desktop-hero.png'});

@@ -4,7 +4,7 @@ test('desktop navigation, content, assets and responsive layout',async({page})=>
   await page.goto('/');await page.evaluate(()=>document.fonts.ready);
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('h1')).toContainText('WHERE LIMITS');
-  await expect(page.locator('.hero-line>span').first()).toHaveCSS('transform','none');
+  await expect(page.locator('.hero-line>span').first()).toHaveCSS('transform',/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
   await expect.poll(()=>page.locator('.hero-photo img').evaluate(img=>(img as HTMLImageElement).complete)).toBeTruthy();
   await page.screenshot({path:'test-results/desktop-hero.png'});
   for(const width of [1440,1024,768,390,320]){
@@ -59,7 +59,7 @@ test('mobile menu, journal dialog and newsletter handoff',async({page})=>{
   await expect(page.locator('.mobile-menu')).toBeVisible();
   await page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'Gallery'}).click();
   await expect(page.locator('.mobile-menu')).not.toBeVisible();
-  await page.getByRole('button',{name:'Read Rajpura. Something bigger is coming.'}).click();
+  await page.getByRole('button',{name:/Rajpura. Something bigger is coming/i}).click();
   await expect(page.locator('.content-dialog')).toContainText('new flagship');
   await page.keyboard.press('Escape');
   await page.locator('#newsletter-email').fill('member@example.com');
