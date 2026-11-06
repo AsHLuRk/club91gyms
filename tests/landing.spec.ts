@@ -1,4 +1,47 @@
 import { test, expect } from '@playwright/test';
+test('Vengeance facilities support keyboard expansion, focus return and enquiries',async({page})=>{
+  await page.goto('/');
+  const trigger=page.getByRole('button',{name:'Explore Reset. Recover.'});
+  await trigger.scrollIntoViewIfNeeded();await trigger.focus();await trigger.press('Enter');
+  const dialog=page.getByRole('dialog',{name:'Reset. Recover.'});
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText('Spa planned at Rajpura');
+  await expect(dialog.getByRole('button',{name:'Close facility details'})).toBeFocused();
+  await dialog.getByRole('button',{name:'GET RAJPURA UPDATES'}).focus();
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByRole('button',{name:'Close facility details'})).toBeFocused();
+  await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();
+  await expect(trigger).toBeFocused();
+  await trigger.press('Enter');
+  await page.screenshot({path:'test-results/vengeance-desktop.png'});
+  await dialog.getByRole('button',{name:'GET RAJPURA UPDATES'}).click();
+  await expect(dialog).not.toBeVisible();
+  await expect(page.locator('#branch')).toHaveValue('rajpura');
+  await expect(page.locator('#enquiry-type')).toHaveValue('Opening updates');
+  await expect(page.locator('#message')).toHaveValue(/reset. recover/i);
+  expect(await page.evaluate(()=>document.body.style.overflow)).toBe('');
+  await expect(page.locator('[data-vui="glow-border-card"]')).toHaveCount(1);
+  await expect(page.locator('[data-vui="glow-border-card"]')).toContainText('PRO');
+});
+test('Vengeance mobile cards and reduced-motion effects remain usable',async({page})=>{
+  await page.setViewportSize({width:390,height:844});await page.goto('/');
+  await page.getByRole('button',{name:'Explore Refuel your day.'}).click();
+  const dialog=page.getByRole('dialog',{name:'Refuel your day.'});
+  await expect(dialog).toBeVisible();
+  await page.screenshot({path:'test-results/vengeance-mobile.png'});
+  await dialog.getByRole('button',{name:'GET RAJPURA UPDATES'}).click();
+  await expect(page.locator('#branch')).toHaveValue('rajpura');
+  await expect(page.locator('#message')).toHaveValue(/refuel your day/i);
+  await page.getByRole('button',{name:'EXPLORE PRO',exact:true}).click();
+  await expect(page.locator('#message')).toHaveValue(/PRO membership/);
+  await expect(page.locator('.vui-glow-border')).toHaveCSS('animation-name','none');
+  await expect(page.locator('.vui-button-shine').first()).toHaveCSS('display','none');
+  await page.setViewportSize({width:320,height:740});
+  await page.getByRole('button',{name:'Explore Built for strength.'}).click();
+  const bounds=await page.locator('.vui-bento-dialog').boundingBox();
+  expect(bounds!.x).toBeGreaterThanOrEqual(0);expect(bounds!.x+bounds!.width).toBeLessThanOrEqual(320);
+  await page.getByRole('button',{name:'Close facility details'}).click();
+});
 test('desktop navigation, content, assets and responsive layout',async({page})=>{
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto('/');await page.evaluate(()=>document.fonts.ready);

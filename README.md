@@ -23,6 +23,14 @@ Run `npm install`, then `npm run dev`. Run `npm run build` to produce `out/`. Wi
 
 `npm run typecheck` and `npm run build`. The browser smoke tests in `tests/landing.spec.ts` cover mobile layouts, branch tabs, enquiry validation and handoff, gallery dialogs, journal and navigation. Run with `npx playwright test` against the static preview server configured in `playwright.config.ts`.
 
+## Vengeance UI components
+
+The buttons, expandable facilities grid and featured membership border use adapted Vengeance UI source. Components are in `components/ui/`, with scoped styling in `app/vengeance.css`. Original sources, hashes and adaptation notes are in `vendor/vengeance-ui/`; the MIT license ships at `/licenses/VengeanceUI-LICENSE.txt`.
+
+Button shine and the Pro card border animate only on hover or keyboard focus. Reduced-motion preferences disable these effects. Facility cards open native accessible dialogs with Escape/backdrop dismissal, focus restoration and enquiry buttons that preselect the correct branch and topic. Spa and café enquiries select Rajpura.
+
+No additional animation engine is installed. `clsx` and `tailwind-merge` supply the class utility. The existing Next.js/Tailwind theme is preserved. `components.json` declares the Vengeance registry and TypeScript supports the `@/*` alias for future components.
+
 ## Hosting
 
 Sites project identity is stored in `.openai/hosting.json`. The repository can alternatively be imported into Vercel as a Next.js project; no secrets are required for the current frontend. Sites publication remains private unless sharing is explicitly changed.

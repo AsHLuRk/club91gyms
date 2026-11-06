@@ -1,0 +1,17 @@
+[
+  {
+    "name": "animated-button",
+    "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/animated-button.json",
+    "sha256": "f07b5b0b8f604f0490fb577dc903e769b2277ea4ad1e9467edb074e0089cb9ad"
+  },
+  {
+    "name": "expandable-bento-grid",
+    "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/expandable-bento-grid.json",
+    "sha256": "1f3a8914ada1b67e3acb061b0b07a66710ebf06720a12c4c208619dcf870bb5b"
+  },
+  {
+    "name": "glow-border-card",
+    "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/glow-border-card.json",
+    "sha256": "692d034f1335ea9ed6154f9c9a482a2a1c3f958633c39291bd3635ecefbe7816"
+  }
+]

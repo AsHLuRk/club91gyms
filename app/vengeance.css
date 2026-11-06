@@ -1,0 +1,49 @@
+/* Adapted Vengeance UI component styles; see public/licenses/VengeanceUI-LICENSE.txt. */
+.vui-button{position:relative;isolation:isolate;overflow:hidden;--shine:rgba(255,255,255,.7)}
+.vui-button-content{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:inherit;gap:inherit;width:100%;pointer-events:none}
+.vui-button-shine{position:absolute;inset:0;z-index:1;background:linear-gradient(110deg,transparent 20%,#ffffff24 46%,#ffffff50 50%,#ffffff24 54%,transparent 80%);transform:translateX(-130%);pointer-events:none}
+.vui-button-border{position:absolute;inset:0;padding:1px;border-radius:inherit;background:linear-gradient(-75deg,transparent 30%,var(--shine) 50%,transparent 70%);background-size:200% 100%;background-position:100% 0;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;opacity:0;pointer-events:none;z-index:3}
+.vui-button:is(:hover,:focus-visible):not(:disabled) .vui-button-shine{animation:vui-shine .7s ease-out forwards}
+.vui-button:is(:hover,:focus-visible):not(:disabled) .vui-button-border{animation:vui-border-shine .7s ease-out forwards}
+.vui-button:active:not(:disabled){transform:scale(.98)}
+@keyframes vui-shine{to{transform:translateX(130%)}}
+@keyframes vui-border-shine{0%{background-position:100% 0;opacity:0}45%{opacity:1}100%{background-position:0% 0;opacity:0}}
+
+@property --vui-glow-angle{syntax:'<angle>';initial-value:15deg;inherits:false}
+.vui-glow-card{position:relative;isolation:isolate}
+.vui-glow-border{position:absolute;inset:-1px;z-index:1;border-radius:inherit;padding:2px;pointer-events:none;background:conic-gradient(from var(--vui-glow-angle),var(--glow-color-1),var(--glow-color-2),var(--glow-color-3),var(--glow-color-4),var(--glow-color-5),var(--glow-color-6),var(--glow-color-7),var(--glow-color-8),var(--glow-color-9),var(--glow-color-10));mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;animation:vui-glow-turn var(--glow-animation-duration,5s) linear infinite;animation-play-state:paused}
+.vui-glow-card:is(:hover,:focus-within):not([data-paused]) .vui-glow-border{animation-play-state:running}
+.vui-glow-card .plan-badge{z-index:2}
+@keyframes vui-glow-turn{to{--vui-glow-angle:375deg}}
+
+.vui-bento-trigger{text-align:left;width:100%;padding:0;color:var(--white);border:0}
+.vui-bento-trigger:focus-visible{outline:2px solid #ff6379;outline-offset:4px}
+.vui-bento-trigger:focus-visible img{transform:scale(1.045)}
+.vui-bento-trigger:focus-visible:after{width:100%}
+.vui-facility-title{display:block;font-family:Bebas,'Arial Narrow',Impact,sans-serif;font-size:38px;line-height:1.05}
+.vui-facility-description{display:block;font-size:10px;color:#bfbfbf;line-height:1.6;margin-top:8px;max-width:330px}
+.vui-facility-explore{display:flex;align-items:center;gap:10px;font-size:7px;letter-spacing:.12em;margin-top:16px;color:#eee}
+.vui-facility-explore svg{color:#ff5067;transition:transform .25s}
+.vui-bento-trigger:hover .vui-facility-explore svg{transform:rotate(90deg)}
+.vui-bento-dialog{width:min(940px,calc(100vw - 40px));max-width:none;max-height:90dvh;margin:auto;padding:0;border:1px solid #5a5a5a;background:#141414;color:var(--white);overflow:auto}
+.vui-bento-dialog::backdrop{background:#000d;backdrop-filter:blur(6px)}
+.vui-bento-expanded{display:grid;grid-template-columns:.95fr 1.05fr;position:relative;min-height:500px}
+.vui-bento-image{position:relative;min-height:100%;overflow:hidden;background:#101010}
+.vui-bento-image img{object-fit:cover;filter:saturate(.65)}
+.vui-bento-image:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#000b,transparent 70%)}
+.vui-bento-image-icon{position:absolute;bottom:30px;left:30px;z-index:2;color:white}
+.vui-bento-image-icon svg{height:38px;width:38px}
+.vui-bento-copy{padding:52px 38px 35px}
+.vui-bento-copy .eyebrow{font-size:8px;margin-bottom:20px}
+.vui-bento-copy h3{font-size:51px;margin-bottom:17px}
+.vui-bento-copy>p:not(.eyebrow):not(.vui-availability){font-size:12px;color:#bbb}
+.vui-bento-content p{font-size:12px;color:#aaa;margin-top:20px;line-height:1.8}
+.vui-bento-content ul{list-style:none;padding:0;margin:24px 0}
+.vui-bento-content li{display:flex;align-items:flex-start;gap:11px;font-size:11px;line-height:1.65;margin:13px 0;color:#ddd}
+.vui-bento-content li svg{flex-shrink:0;color:#ff5067;margin-top:2px}
+.vui-availability{font-size:9px;color:#aaa;line-height:1.8;border-top:1px solid #333;padding-top:18px;margin:0 0 23px}
+.vui-bento-copy .button{width:100%;font-size:9px;justify-content:space-between}
+.vui-bento-dialog .close-button{width:44px;height:44px;top:12px;right:12px}
+@media(max-width:1023px){.vui-facility-title{font-size:31px}.vui-facility-description{font-size:9px}}
+@media(max-width:767px){.vui-bento-dialog{width:calc(100vw - 24px);max-height:88dvh}.vui-bento-expanded{grid-template-columns:1fr;min-height:0}.vui-bento-image{height:200px;min-height:0}.vui-bento-copy{padding:27px 24px}.vui-bento-copy h3{font-size:42px}.vui-bento-image-icon{bottom:20px;left:22px}.vui-bento-image-icon svg{height:28px;width:28px}.vui-facility-title{font-size:29px}.vui-facility-explore{font-size:6px;letter-spacing:.06em;margin-top:12px;gap:7px}.vui-facility-explore svg{width:11px}.vui-bento-trigger .facility-bottom{right:17px}}
+@media(prefers-reduced-motion:reduce){.vui-button-shine,.vui-button-border{display:none}.vui-glow-border{animation:none}.vui-bento-trigger img,.vui-bento-trigger svg{transition:none!important}.vui-button:active:not(:disabled){transform:none}}
