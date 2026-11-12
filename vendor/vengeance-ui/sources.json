@@ -13,5 +13,15 @@
     "name": "glow-border-card",
     "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/glow-border-card.json",
     "sha256": "692d034f1335ea9ed6154f9c9a482a2a1c3f958633c39291bd3635ecefbe7816"
+  },
+  {
+    "name": "image-reveal-list",
+    "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/image-reveal-list.json",
+    "sha256": "6d8d3ac6ad05d4c6b424cb515b49458e5c98b38a1e28c4743626c32881883c85"
+  },
+  {
+    "name": "border-beam",
+    "url": "https://raw.githubusercontent.com/Ashutoshx7/VengeanceUI/main/public/r/border-beam.json",
+    "sha256": "251cc871fdf9093aee0c97838f7ed2de40bc0ac3617fde9063e6503381680d06"
   }
 ]

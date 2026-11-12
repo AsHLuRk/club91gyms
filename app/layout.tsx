@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './vengeance.css';
+import './experience.css';
 const origin = 'https://club91-gyms-gagan-fitness.ashlurk367.chatgpt.site';
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
