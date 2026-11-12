@@ -6,18 +6,15 @@ Premium responsive landing page built with Next.js App Router, TypeScript, Tailw
 
 Run `npm install`, then `npm run dev`. Run `npm run build` to produce `out/`. Windows PowerShell users can use `npm.cmd`.
 
-## Content and launch checklist
+## Content and launch details
 
-- Three operating gyms are confirmed: two in Baltana and one in Zirakpur. Rajpura is upcoming.
-- Opening date **30 November 2026 at 10:00 IST**, street addresses, hours, plan prices and plan inclusions are illustrative, authorized for the design preview. These are visibly labeled and excluded from structured data.
-- Supplied brand concept imagery is labeled. Editorial images are inspiration, not actual branch photographs. See `ASSETS.md`.
-- The supplied artwork provides +91 70350 00071, +91 70878 78759 and Instagram `gagan_fitnesss`. Both phone links work; WhatsApp uses the first central number pending branch-specific routing confirmation.
-- Enquiry forms validate client-side and prepare an explicit WhatsApp handoff. They do not silently store or send leads. The selected branch and enquiry type are included. Newsletter requests also use an explicit WhatsApp handoff.
-- No invented customer reviews, ratings, transformations, trainer credentials or membership counts are published. Gagan is shown using the supplied promotional artwork. Replace with a dedicated portrait when available.
-- Before public launch, replace sample content, confirm contact ownership and WhatsApp availability, exact maps, facilities, consent language and business policies. Add verified reviews and transformations with consent when available.
-- This private preview is intentionally `noindex`; robots disallows crawling. On public launch, update `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts` and the canonical origin for the final domain. Add verified street addresses and opening hours to branch JSON-LD then.
-- Replace the date in `Countdown` in `app/page.tsx` when confirmed. Past dates clamp to zero. Do not show the preview launch date as a confirmed date.
-- No analytics, ad pixels, payment service or form delivery backend has been configured. Add these only with real business settings. Images are locally optimized WebP; Next Image uses static-safe unoptimized mode so no runtime image server is needed.
+- Service information is transcribed from the owner-supplied opening poster in `lib/club-content.ts`: Fitness & Training, Luxury Wellness, Premium Lifestyle and HYROX Training.
+- The poster says **Opening Soon** and provides no opening date, exact address, hours or prices. The former illustrative countdown, street addresses, hours, package prices and inclusions have been removed. Membership cards now collect areas of interest; they do not represent fixed packages.
+- Previously supplied context identifies two operating gyms in Baltana, one in Zirakpur and the upcoming Rajpura location. Announced services are scoped to the upcoming location; access and schedules should be confirmed with the team.
+- Previously supplied contact details remain +91 70350 00071, +91 70878 78759 and Instagram `gagan_fitnesss`. WhatsApp uses the first central number.
+- Enquiry and newsletter forms prepare explicit WhatsApp handoffs. No payment, website database, analytics or lead-delivery backend is configured.
+- Images remain locally optimized WebP brand concepts and editorial inspiration, not actual facility photographs. See `ASSETS.md`.
+- The preview remains `noindex`. Confirm business details, policies and canonical domain before public launch.
 
 ## QA
 
@@ -25,9 +22,9 @@ Run `npm install`, then `npm run dev`. Run `npm run build` to produce `out/`. Wi
 
 ## Vengeance UI components
 
-The buttons, expandable facilities grid and featured membership border use adapted Vengeance UI source. Components are in `components/ui/`, with scoped styling in `app/vengeance.css`. Original sources, hashes and adaptation notes are in `vendor/vengeance-ui/`; the MIT license ships at `/licenses/VengeanceUI-LICENSE.txt`.
+The buttons, expandable facilities grid and featured interest-card border use adapted Vengeance UI source. Components are in `components/ui/`, with scoped styling in `app/vengeance.css`. Original sources, hashes and adaptation notes are in `vendor/vengeance-ui/`; the MIT license ships at `/licenses/VengeanceUI-LICENSE.txt`.
 
-Button shine and the Pro card border animate only on hover or keyboard focus. Reduced-motion preferences disable these effects. Facility cards open native accessible dialogs with Escape/backdrop dismissal, focus restoration and enquiry buttons that preselect the correct branch and topic. Spa and café enquiries select Rajpura.
+Button shine and the Perform card border animate only on hover or keyboard focus. Reduced-motion preferences disable these effects. Facility cards open native accessible dialogs with Escape/backdrop dismissal, focus restoration and enquiry buttons that preselect the correct branch and topic. Spa and café enquiries select Rajpura.
 
 No additional animation engine is installed. `clsx` and `tailwind-merge` supply the class utility. The existing Next.js/Tailwind theme is preserved. `components.json` declares the Vengeance registry and TypeScript supports the `@/*` alias for future components.
 
@@ -42,3 +39,7 @@ Sites project identity is stored in `.openai/hosting.json`. The repository can a
 The journal uses an adapted Vengeance Image Reveal List, and the launch card uses its Border Beam. Source snapshots and hashes accompany the existing three components. The custom goal selector carries the selected goal and branch to the enquiry form. Branch tabs now update the form branch used by membership actions. Coaching notes expand using native details elements.
 
 On mobile, facilities become full-width cards, form fields stack, article thumbnails remain visible, and the fixed join action hides while contact is in view. The location graphic links to the Rajpura area in Maps; it does not embed a map or claim an exact branch pin. Tests in `tests/experience.spec.ts` cover the light sequence, reduced motion, keyboard interactions, branch/goal handoff and mobile form clearance.
+
+## Poster and light-flow follow-up
+
+The hero footer now stays in layout flow, so short desktop viewports and larger text cannot collide with the CTA row. The second-line glow begins 0.4 seconds before the first-line sweep finishes. `SectionLight` draws lightweight SVG current paths as sections enter view. The HYROX feature, photo sweeps, journal edges and branch tabs extend the red-light treatment; reduced motion renders static accents. Tests in `tests/poster-followup.spec.ts` cover poster content, short-screen layout, the timing overlap and section motion.
