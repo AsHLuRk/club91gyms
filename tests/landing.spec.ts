@@ -56,7 +56,7 @@ test('desktop navigation, content, assets and responsive layout',async({page})=>
   }
   await page.setViewportSize({width:1440,height:1000});
   await page.locator('#gallery').scrollIntoViewIfNeeded();
-  await expect.poll(()=>page.locator('img').evaluateAll(images=>images.filter(img=>img.getAttribute('loading')!=='lazy'||img.getBoundingClientRect().top<innerHeight).every(img=>(img as HTMLImageElement).complete&&(img as HTMLImageElement).naturalWidth>0))).toBeTruthy();
+  await expect.poll(()=>page.locator('img').evaluateAll(images=>images.filter(img=>{const r=img.getBoundingClientRect();return img.getAttribute('loading')!=='lazy'||(r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0);}).every(img=>(img as HTMLImageElement).complete&&(img as HTMLImageElement).naturalWidth>0))).toBeTruthy();
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.screenshot({path:'test-results/desktop.png',fullPage:true});
   expect(errors).toEqual([]);

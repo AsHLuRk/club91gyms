@@ -34,3 +34,11 @@ No additional animation engine is installed. `clsx` and `tailwind-merge` supply 
 ## Hosting
 
 Sites project identity is stored in `.openai/hosting.json`. The repository can alternatively be imported into Vercel as a Next.js project; no secrets are required for the current frontend. Sites publication remains private unless sharing is explicitly changed.
+
+## Editorial experience refresh
+
+`app/experience.css` refines the original theme; `HeroTitle` plays a single red light sweep after local fonts are ready, then warms the second line into a steady red glow. Reduced-motion visitors get the settled, readable title immediately.
+
+The journal uses an adapted Vengeance Image Reveal List, and the launch card uses its Border Beam. Source snapshots and hashes accompany the existing three components. The custom goal selector carries the selected goal and branch to the enquiry form. Branch tabs now update the form branch used by membership actions. Coaching notes expand using native details elements.
+
+On mobile, facilities become full-width cards, form fields stack, article thumbnails remain visible, and the fixed join action hides while contact is in view. The location graphic links to the Rajpura area in Maps; it does not embed a map or claim an exact branch pin. Tests in `tests/experience.spec.ts` cover the light sequence, reduced motion, keyboard interactions, branch/goal handoff and mobile form clearance.
