@@ -13,9 +13,9 @@
 .hero-title .hero-line { overflow:visible; position:relative; width:fit-content; }
 .hero-title .hero-line>span { animation:none; }
 .hero-title .hero-sweep .hero-light { position:absolute; inset:0; color:transparent; -webkit-text-stroke:0; background:linear-gradient(100deg,transparent 38%,#e31937 46%,#ffb0bc 50%,#f52647 54%,transparent 62%); background-size:250% 100%; background-position:130% 0; background-clip:text; -webkit-background-clip:text; filter:drop-shadow(0 0 12px #f32243aa); pointer-events:none; opacity:0; }
-.hero-title[data-ready=true] .hero-sweep .hero-light { animation:club-light-pass 1.9s cubic-bezier(.4,0,.3,1) .35s both; }
+.hero-title[data-ready=true] .hero-sweep .hero-light { animation:club-light-pass 1.35s cubic-bezier(.4,0,.3,1) .2s both; }
 .hero-title .hero-ignite { color:transparent; -webkit-text-stroke:1px #d4d4d0; }
-.hero-title[data-ready=true] .hero-ignite { animation:club-ignite 1.25s ease-out 2.05s both; }
+.hero-title[data-ready=true] .hero-ignite { animation:club-ignite 1.05s ease-out 1.15s both; }
 @keyframes club-light-pass { 0% { opacity:0; background-position:130% 0; } 12%,80% { opacity:1; } 100% { opacity:0; background-position:-30% 0; } }
 @keyframes club-ignite { 0% { color:transparent; -webkit-text-stroke-color:#d4d4d0; text-shadow:none; } 45% { color:#ff4b63; -webkit-text-stroke-color:#ff5e73; text-shadow:0 0 30px #e3193790,0 0 70px #e3193730; } 100% { color:#ed2845; -webkit-text-stroke-color:#ff5269; text-shadow:0 0 22px #e3193745; } }
 .hero-calibration { position:absolute; top:140px; right:4%; bottom:160px; display:flex; flex-direction:column; align-items:center; gap:22px; width:15px; z-index:1; }

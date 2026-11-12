@@ -24,7 +24,7 @@ test('hero light sweeps first and finishes with a steady red title',async({page}
 test('branch choice carries through plans and training goals',async({page})=>{
  await page.goto('/');
  await page.getByRole('tab',{name:'04 Zirakpur'}).click();
- await page.getByRole('button',{name:'EXPLORE PRO',exact:true}).click();
+ await page.getByRole('button',{name:'EXPLORE PERFORM',exact:true}).click();
  await expect(page.locator('#branch')).toHaveValue('zirakpur');
  await page.getByRole('button',{name:'Train with a coach'}).click();
  await expect(page.getByRole('button',{name:'Train with a coach'})).toHaveAttribute('aria-pressed','true');

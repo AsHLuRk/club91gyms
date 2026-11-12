@@ -1,0 +1,147 @@
+/* A connected red current: section signals, photographic scans and interactive edges. */
+/* Keep the hero footer in flow. Its position must never depend on an assumed text height. */
+.hero { display:flex; flex-direction:column; height:auto; min-height:max(760px,100svh); max-height:none; }
+.hero-content { padding-top:clamp(165px,21vh,260px); padding-bottom:56px; flex:1; }
+.hero-foot { position:relative; inset:auto; margin-top:auto; padding-block:24px 30px; flex-shrink:0; gap:24px; flex-wrap:wrap; }
+.hero-calibration { bottom:140px; }
+.opening-band { display:flex; justify-content:center; align-items:center; gap:35px; flex-wrap:wrap; padding:22px 30px; background:#121212; border-block:1px solid #363636; }
+.opening-band>span { color:#ff526c; font-size:10px; letter-spacing:.15em; font-weight:700; }
+.opening-band p { display:flex; align-items:center; gap:15px; font-family:Bebas,sans-serif; font-size:24px; line-height:1; letter-spacing:.05em; }
+.opening-band i { width:4px; height:4px; background:#e31937; transform:rotate(45deg); }
+.opening-band a { display:flex; align-items:center; gap:10px; font-size:10px; letter-spacing:.07em; min-height:44px; }
+.opening-band a:hover { color:#ff526c; }
+.section-light { display:block; width:190px; height:66px; pointer-events:none; }
+.section-light svg { display:block; width:100%; height:100%; overflow:visible; }
+.light-track { stroke:#505050; stroke-width:1; }
+.light-current { stroke:#ff3555; stroke-width:2; stroke-linecap:round; stroke-dasharray:.22 1; stroke-dashoffset:1.2; filter:drop-shadow(0 0 5px #ff193d); opacity:0; }
+.light-terminal { fill:#8c2334; }
+.light-active .light-current { animation:section-current 2.8s ease-in-out .1s both; }
+.light-active .light-terminal { animation:terminal-warm 2.8s ease .1s both; }
+@keyframes section-current { 0% { stroke-dashoffset:1.2; opacity:0; } 12%,78% { opacity:1; } 100% { stroke-dashoffset:-1; opacity:.4; } }
+@keyframes terminal-warm { 0%,65% { fill:#8c2334; } 82% { fill:#ffb3be; filter:drop-shadow(0 0 7px #f3193f); } 100% { fill:#f52647; } }
+.section-heading>.section-light { position:absolute; right:0; top:-40px; }
+.section-heading:before { content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2px; background:linear-gradient(90deg,transparent 40%,#e31937 48%,#ffd5dd 50%,#e31937 52%,transparent 60%); background-size:250% 100%; opacity:0; pointer-events:none; }
+.section-heading.in-view:before { animation:edge-current 2s ease-out .1s both; }
+@keyframes edge-current { 0% { background-position:130% 0; opacity:0; } 15%,80% { opacity:1; } 100% { background-position:-30% 0; opacity:0; } }
+.intro-section,.coach-section,.footer { position:relative; }
+.corner-light { position:absolute; top:16px; right:max(20px,calc((100vw - 1280px)/2)); }
+.intro-section>.corner-light,.coach-section>.corner-light { right:0; }
+.community-band>.corner-light { top:-8px; right:5%; opacity:.6; }
+.footer-light { position:absolute; right:5%; top:8px; }
+.goal-light { width:260px; height:90px; margin-top:18px; }
+.page-current { position:fixed; top:110px; bottom:30px; left:17px; width:1px; background:#ffffff0b; z-index:25; pointer-events:none; }
+.page-current i { position:absolute; top:0; width:2px; height:70px; background:linear-gradient(transparent,#ed2343,#ffafbc,transparent); box-shadow:0 0 9px #ef123c70; }
+@supports(animation-timeline:scroll()) { .page-current i { animation:page-current-position linear both; animation-timeline:scroll(root); } }
+@keyframes page-current-position { from { top:0; } to { top:calc(100% - 70px); } }
+/* Red light across photography is clipped by the image frame, never by the copy. */
+.photo-light { position:absolute; inset:0; background:linear-gradient(110deg,transparent 35%,#ee173d00 40%,#fa22493a 49%,#ffcad23a 50%,#ee173d00 59%,transparent 65%); background-size:300% 100%; background-position:140% 0; opacity:0; pointer-events:none; z-index:1; }
+.intro-image.in-view>.photo-light,.coach-portrait.in-view>.photo-light { animation:photo-current 2.4s ease-out .4s both; }
+@keyframes photo-current { 0% { opacity:0; background-position:140% 0; } 20%,65% { opacity:1; } 100% { opacity:0; background-position:-40% 0; } }
+@media(hover:hover) {
+ .intro-image:hover>.photo-light,.coach-portrait:hover>.photo-light,.gallery-item:hover>.photo-light { animation:photo-current-hover 1.3s ease-out both; }
+}
+@keyframes photo-current-hover { 0% { opacity:0; background-position:140% 0; } 20%,65% { opacity:1; } 100% { opacity:0; background-position:-40% 0; } }
+.vui-button-shine { background:linear-gradient(110deg,transparent 20%,#f5264730 43%,#ffd2da80 50%,#f5264730 57%,transparent 80%); }
+.vui-button:is(:hover,:focus-visible) { box-shadow:0 0 20px #e3193730; }
+.facility-card:before { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(120deg,transparent 40%,#ff24442a 49%,#ff667640 50%,transparent 60%); background-size:300% 100%; background-position:130% 0; opacity:0; }
+.facility-card:is(:hover,:focus-visible):before { animation:photo-current-hover 1.2s ease-out; }
+.facility-top,.facility-bottom,.facility-arrow { z-index:2; }
+.branch-tabs button.active:after { background:linear-gradient(90deg,#e31937,#ffbdc8,#e31937); background-size:250% 100%; box-shadow:0 0 10px #e3193766; animation:tab-current .9s ease-out both; }
+@keyframes tab-current { from { background-position:100% 0; } to { background-position:0 0; } }
+.branch-panel { transition:border-color .3s; }
+.branch-panel:focus-within { border-color:#a83247; }
+.plan:before { content:''; position:absolute; left:-1px; top:0; bottom:0; width:2px; background:linear-gradient(transparent,#ff526c,transparent); opacity:0; transform:scaleY(.2); transition:opacity .3s,transform .4s; }
+.plan:is(:hover,:focus-within):before { opacity:1; transform:scaleY(1); box-shadow:0 0 15px #e3193755; }
+.plan-level i { transform-origin:bottom; transition:transform .3s; }
+.plan:is(:hover,:focus-within) .plan-level i { transform:scaleY(1.22); }
+.plan-enquiry-label { margin-top:25px; font-size:10px; letter-spacing:.07em; color:#ff879a; }
+.coach-notes details[open] { border-bottom-color:#e31937; }
+.coach-notes details[open] summary { color:#ff879a; }
+.goal-options button[aria-pressed=true] { box-shadow:inset 0 -2px #f63453; }
+.journal-row:after { content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2px; background:linear-gradient(90deg,#e31937,#ff97aa,transparent); transform:scaleX(0); transform-origin:left; transition:transform .45s; }
+.journal-row.is-active:after { transform:scaleX(1); }
+.journal-row.is-active .journal-row-arrow { filter:drop-shadow(0 0 6px #ed234366); }
+.contact-form-wrap:focus-within { border-top-color:#ff91a5; box-shadow:0 -5px 24px -12px #f32648; }
+.footer-statement:hover>span { color:#ed2845; -webkit-text-stroke-color:#ff5269; text-shadow:0 0 20px #e3193740; }
+.opening-title { font-size:clamp(70px,6vw,96px)!important; line-height:.93; }
+.opening-title span { color:#ff3b58; text-shadow:0 0 22px #e3193730; }
+.launch-light { width:100%; max-width:260px; margin:18px 0 8px; }
+.launch-promise { display:flex; flex-wrap:wrap; gap:16px; margin:18px 0; font:20px/1.3 Bebas,sans-serif; letter-spacing:.08em; }
+.launch-promise span+span { border-left:1px solid #a43247; padding-left:16px; }
+/* HYROX uses a different composition: a training index next to illuminated lanes. */
+.hyrox-section { background:#111; border-block:1px solid #333; }
+.hyrox-layout { display:grid; grid-template-columns:1fr 1.12fr; gap:75px; align-items:center; }
+.hyrox-copy h2 { font-size:clamp(76px,8vw,116px); line-height:.9; }
+.hyrox-copy h2>span { color:transparent; -webkit-text-stroke:1px #e2dedd; }
+.hyrox-light { width:230px; height:65px; margin-top:25px; }
+.hyrox-copy>p:not(.eyebrow) { font-size:14px; color:#bdbdbd; line-height:1.85; max-width:390px; margin:20px 0 25px; }
+.hyrox-disciplines { border-top:1px solid #444; }
+.hyrox-disciplines button { width:100%; min-height:59px; display:flex; align-items:center; text-align:left; gap:18px; border-bottom:1px solid #444; padding:14px 12px; font-size:13px; transition:background .25s,border-color .25s; }
+.hyrox-disciplines button>span { font-size:10px; color:#999; }
+.hyrox-disciplines svg { margin-left:auto; flex-shrink:0; }
+.hyrox-disciplines button[aria-pressed=true] { border-bottom-color:#e31937; background:#24161a; }
+.hyrox-disciplines button[aria-pressed=true]>span,.hyrox-disciplines button[aria-pressed=true]>svg { color:#ff5b76; }
+.hyrox-visual { position:relative; min-height:610px; overflow:hidden; background:#151515; }
+.hyrox-visual>img { filter:saturate(.15); object-position:center 35%; opacity:.48; }
+.hyrox-visual:after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,#090909 5%,#090909db 35%,transparent 85%); }
+.hyrox-lanes { display:flex; gap:14px; position:absolute; top:28px; left:32px; right:32px; height:240px; z-index:1; transform:skewY(-12deg); }
+.hyrox-lanes>span { display:flex; flex:1; flex-direction:column; align-items:center; justify-content:space-between; border:1px solid #ffffff40; border-bottom:0; position:relative; transition:background .4s,border-color .4s; }
+.hyrox-lanes b { font:40px/1 Bebas,sans-serif; color:#ffffff9c; padding-top:20px; }
+.hyrox-lanes i { width:1px; height:55%; background:repeating-linear-gradient(0deg,#ffffff70 0 10px,transparent 10px 22px); }
+.hyrox-lanes>span.active { background:linear-gradient(#e319372a,transparent); border-color:#ff526c; box-shadow:0 -2px 18px #e3193720; }
+.hyrox-lanes>span.active b { color:#ff6680; text-shadow:0 0 18px #e3193770; }
+.hyrox-lanes>span.active:after { content:''; position:absolute; left:-1px; top:0; height:50px; width:2px; background:linear-gradient(transparent,#ffc2cd,#e31937); animation:lane-current 1.2s ease-out both; }
+@keyframes lane-current { from { transform:translateY(0); opacity:1; } to { transform:translateY(185px); opacity:0; } }
+.hyrox-caption { position:absolute; bottom:30px; left:32px; right:32px; z-index:2; }
+.hyrox-caption .eyebrow { font-size:10px; margin-bottom:17px; }
+.hyrox-caption h3 { font-size:38px; }
+.hyrox-caption p { font-size:13px; line-height:1.8; color:#c4c4c4; min-height:70px; margin:16px 0 22px; }
+.hyrox-caption small { display:block; font-size:9px; color:#bbb; margin-top:20px; }
+@media(max-width:1200px) { .hyrox-layout { gap:40px; } .hyrox-caption h3 { font-size:34px; } .section-heading>.section-light { width:160px; } }
+@media(max-width:1023px) { .hyrox-layout { gap:28px; grid-template-columns:1fr 1fr; } .hyrox-copy h2 { font-size:82px; } .hyrox-caption { left:24px; right:24px; } .hyrox-lanes { left:24px; right:24px; gap:10px; } .hyrox-caption h3 { font-size:29px; } .hyrox-visual { min-height:650px; } }
+@media(max-width:767px) {
+ .hero { min-height:max(740px,100svh); height:auto; max-height:none; }
+ .hero-content { padding-top:clamp(160px,22svh,230px); padding-bottom:40px; }
+ .hero-foot { position:relative; inset:auto; padding-block:22px 25px; gap:20px; }
+ .opening-band { padding:18px 20px; gap:13px 24px; text-align:center; }
+ .opening-band p { font-size:22px; gap:12px; }
+ .opening-band a { font-size:9px; width:100%; justify-content:center; min-height:36px; }
+ .page-current { left:6px; top:88px; bottom:15px; opacity:.65; }
+ .section-heading>.section-light { width:90px; height:32px; top:-27px; }
+ .corner-light { width:105px; height:36px; top:14px; right:20px; }
+ .intro-section>.corner-light,.coach-section>.corner-light { right:0; }
+ .goal-light { width:210px; height:68px; }
+ .community-band>.corner-light { top:-5px; opacity:.45; }
+ .footer-light { width:100px; height:35px; top:0; right:20px; }
+ .launch-card .opening-title { font-size:80px!important; }
+ .launch-light { width:210px; height:65px; margin:15px 0 5px; }
+ .launch-promise { font-size:19px; gap:12px; } .launch-promise span+span { padding-left:12px; }
+ .hyrox-layout { grid-template-columns:1fr; gap:35px; }
+ .hyrox-copy h2 { font-size:88px; }
+ .hyrox-copy>p:not(.eyebrow) { max-width:none; font-size:14px; }
+ .hyrox-disciplines button { min-height:59px; }
+ .hyrox-visual { min-height:580px; }
+ .hyrox-lanes { top:25px; height:210px; }
+ .hyrox-lanes b { font-size:34px; }
+ .hyrox-caption { bottom:27px; left:24px; right:24px; }
+ .hyrox-caption h3 { font-size:33px; }
+ .hyrox-caption p { min-height:80px; }
+ .hyrox-caption .button { width:100%; font-size:11px; }
+ .hyrox-caption small { line-height:1.6; }
+ .plan-enquiry-label { font-size:10px; }
+}
+@media(max-width:374px) {
+ .hero-content { padding-top:165px; } .hero h1 { font-size:55px; }
+ .hero-foot { gap:16px; } .hero-locations { gap:7px; font-size:8px; }
+ .hyrox-copy h2 { font-size:80px; } .hyrox-visual { min-height:600px; }
+ .hyrox-caption h3 { font-size:30px; } .hyrox-caption p { min-height:95px; }
+ .hyrox-disciplines button { gap:12px; font-size:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .light-current { animation:none!important; stroke-dasharray:none; stroke-dashoffset:0; opacity:.65; filter:none; }
+ .light-terminal { animation:none!important; fill:#e31937; }
+ .page-current { display:none; }
+ .section-heading:before,.photo-light,.facility-card:before,.hyrox-lanes>span.active:after { animation:none!important; display:none; }
+ .branch-tabs button.active:after { animation:none; box-shadow:none; }
+ .plan:before,.journal-row:after,.hyrox-lanes>span { transition:none; }
+}
