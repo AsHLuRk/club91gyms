@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { gagan } from '@/lib/branches';
 import Image from 'next/image';
 import { ArrowUpRight, Dumbbell, Laptop } from 'lucide-react';
 import SectionLight from './section-light';
@@ -53,7 +54,7 @@ export default function PersonalTraining() {
               <p>{detail.next}</p>
             </div>
           </div>
-          <a className="button pt-enquire" href={`https://wa.me/917035000071?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer">
+          <a className="button pt-enquire" href={`https://wa.me/${gagan.phone}?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer">
             Ask about {format === 'Online' ? 'online' : 'in-person'} coaching <ArrowUpRight size={18}/>
           </a>
         </div>

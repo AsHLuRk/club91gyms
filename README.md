@@ -10,8 +10,8 @@ Run `npm install`, then `npm run dev`. Run `npm run build` to produce `out/`. Wi
 
 - Service information is transcribed from the owner-supplied opening poster in `lib/club-content.ts`: Fitness & Training, Luxury Wellness, Premium Lifestyle and HYROX Training.
 - The poster says **Opening Soon** and provides no opening date, exact address, hours or prices. The former illustrative countdown, street addresses, hours, package prices and inclusions have been removed. Membership cards now collect areas of interest; they do not represent fixed packages.
-- Previously supplied context identifies two operating gyms in Baltana, one in Zirakpur and the upcoming Rajpura location. Announced services are scoped to the upcoming location; access and schedules should be confirmed with the team.
-- Previously supplied contact details remain +91 70350 00071, +91 70878 78759 and Instagram `gagan_fitnesss`. WhatsApp uses the first central number.
+- Branches in opening order: Gian Sager Medical College, SVIET Campus, Ram Lila Ground in Baltana (Zirakpur), then Kanika Garden in Rajpura (opening soon as Rajpura’s first premium fitness and wellness branch).
+- Gagan handles branches 1, 2 and 4 and online coaching at +91 70350 00071. Gurinder Singh manages branch 3 at +91 70878 78759. Branch contact links and WhatsApp enquiries use the directory in `lib/branches.ts`.
 - Enquiry and newsletter forms prepare explicit WhatsApp handoffs. No payment, website database, analytics or lead-delivery backend is configured.
 - Images remain locally optimized WebP brand concepts and editorial inspiration, not actual facility photographs. See `ASSETS.md`.
 - The preview remains `noindex`. Confirm business details, policies and canonical domain before public launch.
