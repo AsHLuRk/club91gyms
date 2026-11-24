@@ -1,0 +1,31 @@
+.personal-training { background: #100f10; border-block: 1px solid #363034; }
+.pt-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.pt-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #222; }
+.pt-portrait img { object-fit: cover; }
+.pt-portrait::after { content: ''; position: absolute; inset: 60% 0 0; background: linear-gradient(transparent, #0c080ad9); pointer-events: none; }
+.pt-portrait .pt-light { position: absolute; z-index: 1; left: 5%; bottom: 1rem; width: 47%; height: auto; }
+.pt-copy h2 { font-size: clamp(56px, 6vw, 100px); text-transform: uppercase; line-height: .92; }
+.pt-copy h2 span { color: var(--red); }
+.pt-copy > p:not(.eyebrow), .pt-format p { color: #d1cdcf; line-height: 1.65; }
+.pt-copy > p:not(.eyebrow) { margin-top: 20px; }
+.pt-switch { display: flex; border-bottom: 1px solid #50484b; margin-top: 26px; }
+.pt-switch button { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 50px; color: #c9c2c5; }
+.pt-switch button::after { content: ''; position: absolute; inset: auto 0 -1px; height: 3px; background: #f12d4a; transform: scaleX(0); transition: transform .3s ease; }
+.pt-switch button[aria-pressed=true] { background: #25191c; color: #fff; }
+.pt-switch button[aria-pressed=true]::after { transform: scaleX(1); }
+.pt-format { padding: 22px 0; animation: pt-arrive .35s ease-out both; }
+.pt-format h3 { font-size: 34px; }
+.pt-format p { margin: 8px 0 0; }
+.pt-format p:last-child { font-size: 14px; }
+.pt-enquire { text-transform: uppercase; }
+.hero-copy a.pt-hero-link { display: inline-flex; align-items: center; gap: 8px; color: white; border-bottom: 1px solid #ee3855; font-weight: 600; }
+@keyframes pt-arrive { from { opacity: .1; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .pt-layout { grid-template-columns: 1fr; gap: 26px; }
+  .pt-portrait { aspect-ratio: 16 / 10; }
+  .pt-portrait img { object-position: 50% 12%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-format { animation: none; }
+  .pt-switch button::after { transition: none; }
+}
