@@ -63,9 +63,9 @@ test('desktop navigation, content, assets and responsive layout',async({page})=>
 });
 test('branch controls and accessible gallery lightbox',async({page})=>{
   await page.goto('/');
-  await page.getByRole('tab',{name:'03 Baltana II'}).click();
-  await expect(page.getByRole('tabpanel')).toContainText('CLUB 91 BALTANA II');
-  await page.getByRole('tab',{name:'03 Baltana II'}).press('ArrowRight');
+  await page.getByRole('tab',{name:'02 SVIET Campus'}).click();
+  await expect(page.getByRole('tabpanel')).toContainText('CLUB 91 SVIET CAMPUS');
+  await page.getByRole('tab',{name:'02 SVIET Campus'}).press('ArrowRight');
   await expect(page.getByRole('tabpanel')).toContainText('CLUB 91 ZIRAKPUR');
   await page.getByRole('button',{name:'Recovery',exact:true}).click();
   await expect(page.locator('.gallery-item')).toHaveCount(2);
@@ -78,7 +78,7 @@ test('branch controls and accessible gallery lightbox',async({page})=>{
 });
 test('enquiry validates and preserves branch in explicit WhatsApp handoff',async({page})=>{
   await page.goto('/');
-  await page.getByRole('tab',{name:'04 Zirakpur'}).click();
+  await page.getByRole('tab',{name:'03 Zirakpur (Baltana)'}).click();
   await page.getByRole('button',{name:'ENQUIRE NOW',exact:true}).click();
   await expect(page.locator('#branch')).toHaveValue('zirakpur');
   await page.getByRole('button',{name:'PREPARE MY ENQUIRY'}).click();
@@ -91,7 +91,7 @@ test('enquiry validates and preserves branch in explicit WhatsApp handoff',async
   await page.getByRole('button',{name:'PREPARE MY ENQUIRY'}).click();
   await expect(page.getByRole('status')).toContainText('Your enquiry is ready.');
   const href=await page.getByRole('link',{name:'CONTINUE TO WHATSAPP'}).getAttribute('href');
-  expect(href).toContain('https://wa.me/917035000071');
+  expect(href).toContain('https://wa.me/917087878759');
   expect(decodeURIComponent(href!)).toContain('Branch: Zirakpur');
   await page.locator('#branch').selectOption('rajpura');
   await expect(page.getByRole('status')).not.toBeVisible();
@@ -103,7 +103,7 @@ test('mobile menu, journal dialog and newsletter handoff',async({page})=>{
   await page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'Gallery'}).click();
   await expect(page.locator('.mobile-menu')).not.toBeVisible();
   await page.getByRole('button',{name:/Rajpura. Something bigger is coming/i}).click();
-  await expect(page.locator('.content-dialog')).toContainText('new flagship');
+  await expect(page.locator('.content-dialog')).toContainText('Kanika Garden');
   await page.keyboard.press('Escape');
   await page.locator('#newsletter-email').fill('member@example.com');
   await page.getByRole('button',{name:'Prepare updates request'}).click();

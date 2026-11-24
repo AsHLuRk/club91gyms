@@ -328,3 +328,12 @@
   text-transform: uppercase;
 }
 .rajpura-card a:is(:hover, :focus-visible) .rajpura-caption svg { color: var(--red); }
+
+/* Give the campus names room to wrap on narrow screens. */
+.branch-tabs button { white-space: normal; min-width: 0; line-height: 1.1; }
+.hero-locations { flex-wrap: wrap; }
+@media (max-width: 767px) {
+  .club-route { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .club-route a { padding: 12px 9px; }
+  .club-route a:nth-child(odd) { border-left: 0; }
+}
