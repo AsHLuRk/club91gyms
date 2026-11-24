@@ -291,3 +291,40 @@
  .vui-border-beam:after { animation:none!important; display:none; }
  .journal-preview img { transition:none; transform:none; }
 }
+
+/* Keep the complete storefront sign visible at the photograph's native proportions. */
+.rajpura-card {
+  width: 100%;
+  min-width: 0;
+  background: #121212;
+  border: 1px solid #353535;
+}
+.rajpura-card a { display: block; }
+.rajpura-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.rajpura-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 16px clamp(16px, 2vw, 30px);
+  border-top: 2px solid var(--red);
+}
+.rajpura-caption small {
+  display: block;
+  color: #c9c6c7;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+.rajpura-caption strong {
+  display: block;
+  margin-top: 4px;
+  font: 400 clamp(28px, 3vw, 40px)/1.05 Bebas, sans-serif;
+  text-transform: uppercase;
+}
+.rajpura-card a:is(:hover, :focus-visible) .rajpura-caption svg { color: var(--red); }
