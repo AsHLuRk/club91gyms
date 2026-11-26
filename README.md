@@ -6,6 +6,12 @@ Premium responsive landing page built with Next.js App Router, TypeScript, Tailw
 
 Run `npm install`, then `npm run dev`. Run `npm run build` to produce `out/`. Windows PowerShell users can use `npm.cmd`.
 
+## Deploy on Cloudflare Workers
+
+Connect the repository to Workers Builds. Use the repository root, set the build command to `npm run build`, and set the deploy command to `npx wrangler deploy --config wrangler.jsonc`. The Next.js build exports the site to `out/`, which Wrangler serves as static assets. The configured Worker name is `club91gyms`. If connecting an existing Worker with a different name, match the `name` in `wrangler.jsonc` to that Worker.
+
+To verify packaging locally, run `npm run build` followed by `npx wrangler deploy --config wrangler.jsonc --dry-run`.
+
 ## Content and launch details
 
 - Service information is transcribed from the owner-supplied opening poster in `lib/club-content.ts`: Fitness & Training, Luxury Wellness, Premium Lifestyle and HYROX Training.

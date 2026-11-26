@@ -26,6 +26,7 @@
     "tailwindcss": "^4.0.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@playwright/test": "^1.56.0",
-    "sharp": "^0.35.5"
+    "sharp": "^0.35.5",
+    "wrangler": "4.168.0"
   }
 }
