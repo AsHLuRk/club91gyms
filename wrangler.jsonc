@@ -1,0 +1,8 @@
+{
+  "name": "club91gyms",
+  "compatibility_date": "2026-11-26",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
