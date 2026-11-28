@@ -44,7 +44,7 @@ Sites project identity is stored in `.openai/hosting.json`. The repository can a
 
 The journal uses an adapted Vengeance Image Reveal List, and the launch card uses its Border Beam. Source snapshots and hashes accompany the existing three components. The custom goal selector carries the selected goal and branch to the enquiry form. Branch tabs now update the form branch used by membership actions. Coaching notes expand using native details elements.
 
-On mobile, facilities become full-width cards, form fields stack, article thumbnails remain visible, and the fixed join action hides while contact is in view. Gian Sager, Baltana and Rajpura have embedded map previews linked to their supplied pins. SVIET uses an address search. Tests in `tests/experience.spec.ts` cover the light sequence, reduced motion, keyboard interactions, branch/goal handoff and mobile form clearance.
+On mobile, facilities become full-width cards, form fields stack, article thumbnails remain visible, and the fixed join action hides while contact is in view. Gian Sager, Baltana and Rajpura have interactive maps using their supplied pins. SVIET’s interactive map uses its campus address. Each map has a separate Google Maps link. Tests in `tests/experience.spec.ts` cover the light sequence, reduced motion, keyboard interactions, branch/goal handoff and mobile form clearance.
 
 ## Poster and light-flow follow-up
 
