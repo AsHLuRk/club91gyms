@@ -40,7 +40,11 @@ export default function PersonalTraining() {
         <div className="pt-copy">
           <p className="eyebrow">Personal training</p>
           <h2 id="personal-training-title">Train one-to-one<br/>with Gagan<span>.</span></h2>
-          <p>Gagan has personally coached many people. Whether you’re learning your first lift or working towards a strength goal, he starts with your experience, your routine and what you want to achieve.</p>
+          <p>Whether you’re learning your first lift or working towards a strength goal, he starts with your experience, your routine and what you want to achieve.</p>
+          <dl className="pt-results" aria-label="Transformations with Gagan">
+            <div><dt>Online transformations</dt><dd>300<span>+</span></dd></div>
+            <div><dt>In-person transformations</dt><dd>4,000<span>+</span></dd></div>
+          </dl>
           <div className="pt-switch" role="group" aria-label="Choose a coaching format">
             {choices.map(choice => {
               const Icon = formats[choice].icon;
