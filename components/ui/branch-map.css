@@ -1,0 +1,17 @@
+.branch-map {
+  position: relative;
+  min-width: 0;
+  background: #171416;
+  border: 1px solid #493539;
+  margin-top: 20px;
+}
+.branch-map-preview { display: block; width: 100%; height: clamp(190px, 17vw, 260px); border: 0; pointer-events: none; }
+.branch-map-link { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-top: 2px solid var(--red); }
+.branch-map-link::after { content: ''; position: absolute; inset: 0; }
+.branch-map-link svg { flex: none; color: #ff526d; }
+.branch-map-link small { display: block; color: #d8c9cd; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.branch-map-link strong { display: block; margin-top: 5px; font-size: clamp(16px, 1.4vw, 21px); line-height: 1.35; }
+.branch-map-link .map-arrow { margin-left: auto; transition: transform .25s; }
+.branch-map:hover .map-arrow, .branch-map:focus-within .map-arrow { transform: translate(2px,-2px); }
+.branch-map:focus-within { outline: 2px solid #ff526d; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .branch-map-link .map-arrow { transition: none; } }

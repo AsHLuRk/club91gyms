@@ -3,10 +3,10 @@ import { expect, test } from '@playwright/test';
 test('each club has the correct manager, map, phone and WhatsApp handoff', async ({ page }) => {
   await page.goto('/');
   const cases = [
-    ['Gian Sager Medical College', 'Gian Sager Medical College', 'Gagan', '917035000071'],
+    ['Gian Sager Medical College', '30.528797149658203,76.67266082763672', 'Gagan', '917035000071'],
     ['SVIET Campus', 'SVIET Campus', 'Gagan', '917035000071'],
-    ['Zirakpur (Baltana)', 'Ram Lila Ground', 'Gurinder Singh', '917087878759'],
-    ['Rajpura', 'Kanika Garden', 'Gagan', '917035000071'],
+    ['Zirakpur (Baltana)', '30.669780731201172,76.82810974121094', 'Gurinder Singh', '917087878759'],
+    ['Rajpura', '30.478113174438477,76.5921859741211', 'Gagan', '917035000071'],
   ];
   await page.locator('#full-name').fill('Test Visitor');
   await page.locator('#phone').fill('9876543210');
@@ -18,8 +18,12 @@ test('each club has the correct manager, map, phone and WhatsApp handoff', async
     await tab.click();
     const panel = page.getByRole('tabpanel');
     await expect(panel.getByRole('link', { name: `Call ${manager} about ${name}` })).toHaveAttribute('href', 'tel:+' + phone);
-    const map = await panel.getByRole('link', { name: 'Explore the area' }).getAttribute('href');
-    expect(new URL(map!).searchParams.get('query')).toContain(landmark);
+    const map = await panel.getByRole('link', { name: /in Google Maps$/ }).getAttribute('href');
+    const url = new URL(map!);
+    expect(url.searchParams.get(index === 1 ? 'query' : 'q')).toContain(landmark);
+    const preview = panel.locator('iframe');
+    if (index === 1) await expect(preview).toHaveCount(0);
+    else await expect(preview).toHaveAttribute('src', map + '&output=embed');
     expect(new URL((await panel.getByRole('link', { name: /on WhatsApp/ }).getAttribute('href'))!).pathname).toBe('/' + phone);
     await page.getByRole('button', { name: 'PREPARE MY ENQUIRY' }).click();
     const handoff = new URL((await page.getByRole('link', { name: 'CONTINUE TO WHATSAPP' }).getAttribute('href'))!);

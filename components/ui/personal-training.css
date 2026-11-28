@@ -29,3 +29,10 @@
   .pt-format { animation: none; }
   .pt-switch button::after { transition: none; }
 }
+
+.pt-results { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); margin: 24px 0; padding-block: 15px; border-block: 1px solid #43393c; }
+.pt-results div { display: flex; flex-direction: column-reverse; }
+.pt-results div + div { padding-left: 18px; border-left: 1px solid #43393c; }
+.pt-results dt { color: #d6ced1; font-size: 13px; }
+.pt-results dd { margin: 0; font: 400 clamp(36px, 4vw, 54px)/1 Bebas,sans-serif; }
+.pt-results dd span { color: #ff4565; }
