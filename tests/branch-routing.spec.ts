@@ -15,6 +15,7 @@ test('each club has the correct manager, map, phone and WhatsApp handoff', async
   for (const [index, [name, landmark, manager, phone]] of cases.entries()) {
     const tab = page.getByRole('tablist', { name: 'Gym branches' }).getByRole('tab').nth(index);
     await expect(tab).toContainText(name);
+    await tab.scrollIntoViewIfNeeded();
     await tab.click();
     const panel = page.getByRole('tabpanel');
     await expect(panel.getByRole('link', { name: `Call ${manager} about ${name}` })).toHaveAttribute('href', 'tel:+' + phone);
@@ -22,7 +23,12 @@ test('each club has the correct manager, map, phone and WhatsApp handoff', async
     const url = new URL(map!);
     expect(url.searchParams.get(index === 1 ? 'query' : 'q')).toContain(landmark);
     const preview = panel.locator('iframe');
-    if (index === 1) await expect(preview).toHaveCount(0);
+    await preview.scrollIntoViewIfNeeded();
+    expect(await preview.evaluate(frame => {
+      const r = frame.getBoundingClientRect();
+      return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === frame;
+    })).toBe(true);
+    if (index === 1) expect(new URL((await preview.getAttribute('src'))!).searchParams.get('q')).toContain(landmark);
     else await expect(preview).toHaveAttribute('src', map + '&output=embed');
     expect(new URL((await panel.getByRole('link', { name: /on WhatsApp/ }).getAttribute('href'))!).pathname).toBe('/' + phone);
     await page.getByRole('button', { name: 'PREPARE MY ENQUIRY' }).click();

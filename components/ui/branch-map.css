@@ -5,9 +5,8 @@
   border: 1px solid #493539;
   margin-top: 20px;
 }
-.branch-map-preview { display: block; width: 100%; height: clamp(190px, 17vw, 260px); border: 0; pointer-events: none; }
+.branch-map-preview { display: block; width: 100%; height: clamp(280px, 24vw, 360px); border: 0; }
 .branch-map-link { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-top: 2px solid var(--red); }
-.branch-map-link::after { content: ''; position: absolute; inset: 0; }
 .branch-map-link svg { flex: none; color: #ff526d; }
 .branch-map-link small { display: block; color: #d8c9cd; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .branch-map-link strong { display: block; margin-top: 5px; font-size: clamp(16px, 1.4vw, 21px); line-height: 1.35; }
